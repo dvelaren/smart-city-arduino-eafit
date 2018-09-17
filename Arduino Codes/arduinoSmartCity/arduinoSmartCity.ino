@@ -24,8 +24,8 @@
 #define LY1 23 //Yellow traffic light 1 connected in pin 23
 #define LG1 24 //Green traffic light 1 connected in pin 24
 #define LR2 25 //Red traffic light 2 connected in pin 25
-#define LG2 26 //Green traffic light 2 connected in pin 26
-#define LY2 27 //Yellow traffic light 2 connected in pin 27
+#define LG2 27 //Green traffic light 2 connected in pin 27
+#define LY2 26 //Yellow traffic light 2 connected in pin 26
 
 
 //Constant definitions
@@ -38,9 +38,11 @@ const float CO2Curve[3] = {2.602, ZERO_POINT_VOLTAGE, (REACTION_VOLTAGE / (2.602
 
 //Variable definitions
 char comm = '\0'; //Command to test an actuator or sensor
+float volts = 0;  //Variable to store current voltage from CO2 sensor
+float co2 = 0;  //Variable to store CO2 value
 
 //Library definitions
-LiquidCrystal_I2C lcd(0x27, 16, 2); //Set the LCD address to 0x27 for a 16 chars and 2 line display
+LiquidCrystal_I2C lcd(0x27, 16, 4); //Set the LCD address to 0x27 for a 16 chars and 4 line display
 
 //Subroutines and functions
 void testAnalogSenAct(char in) {
@@ -52,12 +54,13 @@ void testAnalogSenAct(char in) {
       Serial.println("LDR2: " + String(analogRead(LDR2)));
       break;
     case 'C':
-      float volts = analogRead(CO2) * 5.0 / 1023.0;  //Convert CO2 ADC to volts
-      if ((volts / DC_GAIN) >= ZERO_POINT_VOLTAGE) {
+      volts = analogRead(CO2) * 5.0 / 1023.0;  //Convert CO2 ADC to volts
+      if ( volts / DC_GAIN >= ZERO_POINT_VOLTAGE) {
         Serial.println("Error reading CO2");
       }
       else {
-        Serial.println("CO2: " + String(pow(10, ((volts / DC_GAIN) - CO2Curve[1]) / CO2Curve[2] + CO2Curve[0])));
+        co2 = pow(10, ((volts / DC_GAIN) - CO2Curve[1]) / CO2Curve[2] + CO2Curve[0]);
+        Serial.println("CO2: " + String(co2));
       }
       break;
     case 'D':
@@ -91,11 +94,13 @@ void testAnalogSenAct(char in) {
       digitalWrite(LG2, LOW);
       break;
     case 'F':
-      Serial.println("Testing LCD");
+      Serial.println("Testing LCD, check display");
       lcd.setCursor(0, 0);
       lcd.print("Hello World1");
       lcd.setCursor(0, 1);
       lcd.print("Hello World2");
+      delay(2000);  //Wait 2 seconds
+      lcd.clear();
       break;
   }
 }
@@ -119,41 +124,41 @@ void checkDigitalIn() { //Subroutine to check all digital inputs
     delay(300); //Debouncing for buttons using delay of 300 ms
     while (digitalRead(P2) == HIGH) {} //Debouncing
   }
-  if (digitalRead(CNY1) == HIGH) {
-    Serial.println("CNY1: ON");
-    delay(300); //Debouncing for buttons using delay of 300 ms
-    while (digitalRead(CNY1) == HIGH) {} //Debouncing
-  }
-  if (digitalRead(CNY2) == HIGH) {
-    Serial.println("CNY2: ON");
-    delay(300); //Debouncing for buttons using delay of 300 ms
-    while (digitalRead(CNY2) == HIGH) {} //Debouncing
-  }
-  if (digitalRead(CNY3) == HIGH) {
-    Serial.println("CNY3: ON");
-    delay(300); //Debouncing for buttons using delay of 300 ms
-    while (digitalRead(CNY3) == HIGH) {} //Debouncing
-  }
-  if (digitalRead(CNY4) == HIGH) {
-    Serial.println("CNY4: ON");
-    delay(300); //Debouncing for buttons using delay of 300 ms
-    while (digitalRead(CNY4) == HIGH) {} //Debouncing
-  }
-  if (digitalRead(CNY4) == HIGH) {
-    Serial.println("CNY4: ON");
-    delay(300); //Debouncing for buttons using delay of 300 ms
-    while (digitalRead(CNY4) == HIGH) {} //Debouncing
-  }
-  if (digitalRead(CNY5) == HIGH) {
-    Serial.println("CNY5: ON");
-    delay(300); //Debouncing for buttons using delay of 300 ms
-    while (digitalRead(CNY5) == HIGH) {} //Debouncing
-  }
-  if (digitalRead(CNY6) == HIGH) {
-    Serial.println("CNY6: ON");
-    delay(300); //Debouncing for buttons using delay of 300 ms
-    while (digitalRead(CNY6) == HIGH) {} //Debouncing
-  }
+  //  if (digitalRead(CNY1) == HIGH) {
+  //    Serial.println("CNY1: ON");
+  //    delay(300); //Debouncing for buttons using delay of 300 ms
+  //    while (digitalRead(CNY1) == HIGH) {} //Debouncing
+  //  }
+  //  if (digitalRead(CNY2) == HIGH) {
+  //    Serial.println("CNY2: ON");
+  //    delay(300); //Debouncing for buttons using delay of 300 ms
+  //    while (digitalRead(CNY2) == HIGH) {} //Debouncing
+  //  }
+  //  if (digitalRead(CNY3) == HIGH) {
+  //    Serial.println("CNY3: ON");
+  //    delay(300); //Debouncing for buttons using delay of 300 ms
+  //    while (digitalRead(CNY3) == HIGH) {} //Debouncing
+  //  }
+  //  if (digitalRead(CNY4) == HIGH) {
+  //    Serial.println("CNY4: ON");
+  //    delay(300); //Debouncing for buttons using delay of 300 ms
+  //    while (digitalRead(CNY4) == HIGH) {} //Debouncing
+  //  }
+  //  if (digitalRead(CNY4) == HIGH) {
+  //    Serial.println("CNY4: ON");
+  //    delay(300); //Debouncing for buttons using delay of 300 ms
+  //    while (digitalRead(CNY4) == HIGH) {} //Debouncing
+  //  }
+  //  if (digitalRead(CNY5) == HIGH) {
+  //    Serial.println("CNY5: ON");
+  //    delay(300); //Debouncing for buttons using delay of 300 ms
+  //    while (digitalRead(CNY5) == HIGH) {} //Debouncing
+  //  }
+  //  if (digitalRead(CNY6) == HIGH) {
+  //    Serial.println("CNY6: ON");
+  //    delay(300); //Debouncing for buttons using delay of 300 ms
+  //    while (digitalRead(CNY6) == HIGH) {} //Debouncing
+  //  }
 }
 
 //Configuration
@@ -186,6 +191,13 @@ void setup() {
   Serial.begin(9600); //Start Serial communications with computer via Serial0 (TX0 RX0) at 9600 bauds
   lcd.begin();  //Start communications with LCD display
   lcd.backlight();  //Turn on LCD backlight
+  Serial.println("In order to test Analog Sensors and Actuators, send the following commands through the Serial Monitor:");
+  Serial.println("A: Tests LDR1 Sensor");
+  Serial.println("B: Tests LDR2 Sensor");
+  Serial.println("C: Test CO2 Sensor");
+  Serial.println("D: Tests Traffic Light 1 (LR1, LY1 and LG1)");
+  Serial.println("E: Tests Traffic Light 2 (LR2, LY2 and LG2)");
+  Serial.println("F: Tests LCD");
 }
 
 void loop() {
