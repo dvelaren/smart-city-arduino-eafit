@@ -129,11 +129,11 @@ void checkDigitalIn() { //Subroutine to check all digital inputs
   //    delay(300); //Debouncing for buttons using delay of 300 ms
   //    while (digitalRead(CNY1) == HIGH) {} //Debouncing
   //  }
-  //  if (digitalRead(CNY2) == HIGH) {
-  //    Serial.println("CNY2: ON");
-  //    delay(300); //Debouncing for buttons using delay of 300 ms
-  //    while (digitalRead(CNY2) == HIGH) {} //Debouncing
-  //  }
+    if (digitalRead(CNY2) == HIGH) {
+      Serial.println("CNY2: ON");
+      delay(300); //Debouncing for buttons using delay of 300 ms
+      while (digitalRead(CNY2) == HIGH) {} //Debouncing
+    }
   //  if (digitalRead(CNY3) == HIGH) {
   //    Serial.println("CNY3: ON");
   //    delay(300); //Debouncing for buttons using delay of 300 ms
