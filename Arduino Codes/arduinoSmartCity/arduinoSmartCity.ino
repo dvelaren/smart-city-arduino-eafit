@@ -124,41 +124,41 @@ void checkDigitalIn() { //Subroutine to check all digital inputs
     delay(300); //Debouncing for buttons using delay of 300 ms
     while (digitalRead(P2) == HIGH) {} //Debouncing
   }
-  //  if (digitalRead(CNY1) == HIGH) {
-  //    Serial.println("CNY1: ON");
-  //    delay(300); //Debouncing for buttons using delay of 300 ms
-  //    while (digitalRead(CNY1) == HIGH) {} //Debouncing
-  //  }
-    if (digitalRead(CNY2) == HIGH) {
+   if (digitalRead(CNY1) == LOW) {
+     Serial.println("CNY1: ON");
+     delay(300); //Debouncing for buttons using delay of 300 ms
+     while (digitalRead(CNY1) == LOW) {} //Debouncing
+   }
+    if (digitalRead(CNY2) == LOW) {
       Serial.println("CNY2: ON");
       delay(300); //Debouncing for buttons using delay of 300 ms
-      while (digitalRead(CNY2) == HIGH) {} //Debouncing
+      while (digitalRead(CNY2) == LOW) {} //Debouncing
     }
-  //  if (digitalRead(CNY3) == HIGH) {
-  //    Serial.println("CNY3: ON");
-  //    delay(300); //Debouncing for buttons using delay of 300 ms
-  //    while (digitalRead(CNY3) == HIGH) {} //Debouncing
-  //  }
-  //  if (digitalRead(CNY4) == HIGH) {
-  //    Serial.println("CNY4: ON");
-  //    delay(300); //Debouncing for buttons using delay of 300 ms
-  //    while (digitalRead(CNY4) == HIGH) {} //Debouncing
-  //  }
-  //  if (digitalRead(CNY4) == HIGH) {
-  //    Serial.println("CNY4: ON");
-  //    delay(300); //Debouncing for buttons using delay of 300 ms
-  //    while (digitalRead(CNY4) == HIGH) {} //Debouncing
-  //  }
-  //  if (digitalRead(CNY5) == HIGH) {
-  //    Serial.println("CNY5: ON");
-  //    delay(300); //Debouncing for buttons using delay of 300 ms
-  //    while (digitalRead(CNY5) == HIGH) {} //Debouncing
-  //  }
-  //  if (digitalRead(CNY6) == HIGH) {
-  //    Serial.println("CNY6: ON");
-  //    delay(300); //Debouncing for buttons using delay of 300 ms
-  //    while (digitalRead(CNY6) == HIGH) {} //Debouncing
-  //  }
+   if (digitalRead(CNY3) == LOW) {
+     Serial.println("CNY3: ON");
+     delay(300); //Debouncing for buttons using delay of 300 ms
+     while (digitalRead(CNY3) == LOW) {} //Debouncing
+   }
+   if (digitalRead(CNY4) == LOW) {
+     Serial.println("CNY4: ON");
+     delay(300); //Debouncing for buttons using delay of 300 ms
+     while (digitalRead(CNY4) == LOW) {} //Debouncing
+   }
+   if (digitalRead(CNY4) == LOW) {
+     Serial.println("CNY4: ON");
+     delay(300); //Debouncing for buttons using delay of 300 ms
+     while (digitalRead(CNY4) == LOW) {} //Debouncing
+   }
+   if (digitalRead(CNY5) == LOW) {
+     Serial.println("CNY5: ON");
+     delay(300); //Debouncing for buttons using delay of 300 ms
+     while (digitalRead(CNY5) == LOW) {} //Debouncing
+   }
+   if (digitalRead(CNY6) == LOW) {
+     Serial.println("CNY6: ON");
+     delay(300); //Debouncing for buttons using delay of 300 ms
+     while (digitalRead(CNY6) == LOW) {} //Debouncing
+   }
 }
 
 //Configuration
