@@ -5,6 +5,8 @@
 This project simulates a smart city with some traffic lights, light sensors, proximity sensors for cars and a CO2 sensor.
 
 ## Testing
+First copy all the required libraries to My Documents / Arduino / libraries.
+
 Upload Arduino Codes/arduinoSmartCity/arduinoSmartCity.ino code to Arduino MEGA. Edit header pins to match the device pins. Open Serial Monitor and activate each digital input (each digital sensor) using your hands. If the sensor is OK, you will see a message in the Serial monitor indicating which sensor was activated. In order to test Analog Sensors and Actuators, send the following commands through the Serial Monitor:
 A: Tests LDR1 Sensor
 B: Tests LDR2 Sensor
