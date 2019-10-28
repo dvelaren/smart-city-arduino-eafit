@@ -2,6 +2,12 @@
 ![alt text](https://raw.githubusercontent.com/tidusdavid/smart-city-arduino-eafit/master/Resources/Architecture.png)
 ![alt text](https://raw.githubusercontent.com/tidusdavid/smart-city-arduino-eafit/master/Resources/Device.png)
 
+
+
+# For basic arduino code only with three LED
+visit this linl
+https://github.com/AnoopKumarPrasad/projects/2
+
 This project simulates a smart city with some traffic lights, light sensors, proximity sensors for cars and a CO2 sensor.
 
 ## Testing
