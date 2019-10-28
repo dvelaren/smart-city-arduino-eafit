@@ -6,7 +6,7 @@
 
 # For basic arduino code only with three LED
 visit this linl
-https://github.com/AnoopKumarPrasad/projects/2
+https://github.com/users/AnoopKumarPrasad/projects/2#column-6945872
 
 This project simulates a smart city with some traffic lights, light sensors, proximity sensors for cars and a CO2 sensor.
 
